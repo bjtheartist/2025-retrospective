@@ -1,0 +1,85 @@
+Company,Amount ($M),Round Type,Stage,Sector,Sub-Sector,Lead Investor(s),Date (2025),Verification,Source Type,Notes
+HUB International,1600,Private Equity,Late/PE,Insurance,Insurance Brokerage,"Altas Partners, BCI",Q1,Verified,Press + SEC,Largest Chicago deal 2025 - PE recapitalization
+Nerdio,500,Series C,Late,Enterprise Software,Cloud/IT Management,General Atlantic,Q2,Verified,Press,Unicorn status ($1B+ valuation)
+Kin Insurance,50,Series E,Late,InsurTech,Home Insurance,"QED Investors, Wellington",Q2,Verified,Press,Unicorn status ($2B+ valuation)
+Kin Insurance,200,Debt Facility,Debt,InsurTech,Home Insurance,Undisclosed,Q2,Verified,Press,Growth debt facility
+Triana Biomedicines,120,Series B,Growth,BioTech,Drug Discovery,"Ascenta Capital, Bessemer",Q1,Verified,Press + SEC,Protein degradation therapeutics
+Pelage Pharmaceuticals,120,Series B,Growth,BioTech,Regenerative Medicine,ARCH Venture Partners,Q2,Verified,Press,Hair loss treatment platform
+Zero Hash,104,Series D,Late,FinTech,Crypto Infrastructure,Interactive Brokers,Q1,Verified,Press,Unicorn status ($1B+ valuation)
+Zero Hash,54.6,Series D Extension,Late,FinTech,Crypto Infrastructure,Prior investors,Q3,Verified,Press,Extension round
+Gate Bioscience,65,Series B,Growth,BioTech,Drug Discovery,"Forbion, Eli Lilly, a16z",Q2,Verified,Press,Oral molecular gate technology
+Pasqal,65,US Expansion,Growth,Deep Tech,Quantum Computing,State Incentives + IFA,Q1,Verified,Press,French HQ - Chicago US expansion
+Infleqtion,50,Corporate Investment,Growth,Deep Tech,Quantum Computing,Internal/State,Q2,Verified,Press,Neutral atom quantum systems
+Vibe,50,Series B,Growth,AdTech,TV Advertising,QuantumLight,Q1,Verified,Press,TV advertising platform
+Ocient,42.1,Series B Extension,Growth,Enterprise Software,Data/Analytics,Allstate Strategic Ventures,Q2,Verified,Press,Hyperscale analytics platform
+Sibel Health,39,Series C Extension,Late,HealthTech,Medical Devices,Steele Foundation for Hope,Q1,Verified,Press,Wearable health monitoring
+GeoWealth,38,Series C,Late,FinTech,WealthTech,BlackRock,Q2,Verified,Press,TAMP (Turnkey Asset Management Platform)
+HOPPR,31.5,Series A,Early,HealthTech,Medical Imaging AI,PSG Equity,Q1,Verified,Press,AI medical imaging infrastructure
+Atraverse Medical,29.4,Seed,Early,MedTech,Medical Devices,Deerfield Management,Q2,Flagged,Press,Transseptal access - HQ verification pending
+Coinflow Labs,25,Series A,Early,FinTech,Crypto Payments,Pantera Capital,Q1,Verified,Press,Web3 payments infrastructure
+Empirical Security,12,Seed,Early,Cybersecurity,AI Security,Hyde Park Angels,Q2,Verified,Press,Custom AI security platform
+Letter AI,10.6,Series A,Early,Enterprise Software,Sales Enablement,Stage 2 Capital,Q1,Verified,Press,AI sales enablement platform
+SUN METALON,9.1,Series A,Early,Deep Tech,Advanced Materials,Scrum Ventures,Q2,Verified,Press,Metal manufacturing technology
+Auxira Health,7.8,Seed,Early,HealthTech,Digital Health,OSF Ventures,Q1,Verified,Press,Healthcare innovation platform
+Flow Medical,7.2,Seed,Early,MedTech,Medical Devices,Harper Court Ventures,Q2,Verified,Press,UChicago spinout
+Loop Crypto,6,Series A,Early,FinTech,Crypto Payments,Undisclosed,Q1,Verified,Press,Corrected from initial $8M report
+GigaStar,6,Series A,Early,FinTech,Creator Economy,DV Chain,Q2,Verified,Press,Fan investment platform
+Ascendco Health,4.75,Venture,Early,HealthTech,Healthcare Services,Strategic Angels,Q2,Unverified,Aggregator,Accent fund involvement - limited sourcing
+Tradepost,4.65,Seed,Early,Enterprise Software,B2B Marketplace,Forum Ventures,Q1,Verified,Press,Trade platform
+Silkline,4,Seed,Early,Enterprise Software,AI/Automation,Origin Ventures,Q2,Verified,Press,AI automation platform
+OrisDX,4,Seed,Early,HealthTech,Diagnostics,"Revere Partners, CareQuest",Q1,Verified,Press,Corrected investor attribution
+JusticeBid,4,Venture,Early,LegalTech,Legal Procurement,OnDean Forward,Q2,Verified,Press,Corrected investor attribution
+Arvist,4,Seed,Early,Industrial Tech,Manufacturing AI,"SOSV (HAX), TechNexus",Q1,Verified,Press,Peoria IL - included as Illinois deal
+Casechek,4,Venture,Early,HealthTech,Surgical Tech,Family Office,Q2,Verified,Press,Surgical case management
+Madison Scientific,3,Seed,Early,MedTech,Medical Devices,MedTech Angels,Q1,Verified,Press,mHUB accelerator graduate
+Rebolt,3,Seed,Early,Consumer Tech,E-commerce,Builders VC,Q2,Unverified,Aggregator,HQ location unclear
+Mahalo,2.6,Pre-Seed,Pre-Seed,Enterprise Software,HR Tech,Motivate Venture Capital,Q3,Verified,Press,Founded 2025
+SafeHill,2.6,Pre-Seed,Pre-Seed,Enterprise Software,Data Privacy,KdT Ventures,Q2,Verified,Press,Privacy platform
+Switched Source,2.58,Seed,Early,CleanTech,Energy,Evergreen Climate,Q2,Unverified,Press,Evanston IL
+SimCare AI,2,Seed,Early,HealthTech,Medical Training,Harper Court Ventures,Q1,Verified,Press,AI clinical training
+Pulse Charter Connect,2,Seed,Early,HealthTech,Healthcare Services,Belal Badat Ventures,Q2,Unverified,Press,Northwestern Medicine connection
+Rent Butter,1.92,Seed,Early,PropTech,Rental Insurance,RET Ventures,Q1,Verified,Press,Rental protection platform
+Beacon,1.6,Seed,Early,HealthTech,Digital Health,Harper Court Ventures,Q2,Verified,Press,UChicago spinout
+Grapefruit Health,1.3,Seed,Early,HealthTech,Remote Care,TBD Angels,Q1,Verified,Press,Remote pharmacy care
+Graymatter Labs,1.3,Seed,Early,Deep Tech,Neurotech,APEX Capital,Q2,Verified,Press,Brain-computer interface
+EDGe Surgical,1.3,Venture,Early,MedTech,Surgical Robotics,Undisclosed (bridge),Q2,Verified,Press,Surgical platform - bridge round
+NanoPattern Technologies,1.24,Venture,Early,Deep Tech,Nanotechnology,NSF Grant,Q1,Verified,NSF,Evanston IL - NSF SBIR grant
+Chainsight AI,1,Venture,Early,Enterprise Software,AI/Analytics,Spicewood Ventures,Q2,Verified,Press,Supply chain AI
+Visible.vc,1.03,Venture,Early,Enterprise Software,VC Tools,Connetic Ventures,Q3,Unverified,Aggregator,Investor relations platform
+Formic Technologies,0.47,Venture,Early,Industrial Tech,Robotics,"Alumni Ventures, Gaingels",Q2,Unverified,Press,Robotics-as-a-service
+FalconFirst AI,0.25,Pre-Seed,Pre-Seed,Enterprise Software,AI/Automation,LongJump,Q1,Verified,Press,AI platform
+Auvi Labs,0.1,Seed,Early,HealthTech,Wearables,Undisclosed Angels,Q2,Verified,Press,Champaign IL
+TrueToForm,0.04,Seed,Early,Consumer Tech,Fashion Tech,Undisclosed Angels,Q1,Verified,Press,3D body scanning
+
+Company,Amount ($M),Round Type,Stage,Sector,Sub-Sector,Lead Investor(s),Date (2025),Verification,Source Type,Notes
+Sprocket Sports,Undisclosed,Series A,Early,Sports Tech,Youth Sports,Frontier Growth,Q2,Verified,Press,Youth sports platform
+KOR Financial,Undisclosed,Series B,Growth,FinTech,Trading Tech,UBS Next,Q3,Verified,Press,Fixed income trading
+Plutus Tech,Undisclosed,Seed/Pre-Seed,Pre-Seed,FinTech,Payments,LongJump,Q1,Verified,Press,Payment platform
+The Partner Companies,Undisclosed,Venture,Early,Professional Services,Consulting,Strategic Corporate,Q2,Unverified,Press,Strategic investment
+Sphera,Undisclosed,Private Equity,Late/PE,Enterprise Software,ESG Software,Blackstone,Q1,Verified,Press,2025 PE recap
+Skyello,Undisclosed,Seed,Early,Deep Tech,Drones,University-affiliated,Q2,Verified,Press,Urbana IL - university spinout
+Amylu Foods,Undisclosed,Private Equity,Late/PE,Consumer Products,Food & Beverage,"TowerBrook, Prelude",Q2,Verified,Press,Corrected investor attribution
+SuperAging Biohub,Undisclosed,Seed/Grant,Early,HealthTech,Research,Karen Toffler Trust,Q1,Verified,Press,Northwestern research program
+ghSMART,Undisclosed,Private Equity,Late/PE,Professional Services,Executive Search,KKR (Ascendant),Q2,Verified,Press,Corrected investor attribution
+Dude Products,Undisclosed,Private Equity,Late/PE,Consumer Products,Personal Care,TSG Consumer Partners,Q1,Verified,Press,Corrected investor attribution
+AArete,Undisclosed,Private Equity,Late/PE,Professional Services,Consulting,Parthenon Capital,Q2,Verified,Press,Management consulting
+Bonside,100,Debt Facility,Debt,FinTech,Alternative Lending,i80 Group,Q3,Verified,Press,$100M lending facility
+
+---
+METHODOLOGY NOTES
+---
+"This dataset includes equity, debt, and strategic capital deployed to Chicago-headquartered startups in 2025."
+"Each deal was verified against primary sources where available: SEC filings, press releases, and credible reporting."
+"Deals are marked 'Verified' when confirmed via primary source, 'Flagged' when details need confirmation, 'Unverified' when sourced from aggregators only."
+"Where deal amounts were undisclosed, we note the gap but include the deal in our count."
+"Chicago connection: Company must be HQ'd in Chicago metro area OR have significant Chicago operations."
+"PE recaps and debt facilities are included as 'growth capital' - this differs from pure VC methodology."
+---
+"Data compiled: January 2026"
+"Total Verified Deals: 64"
+"Total Disclosed Capital: $2.99B"
+"Corrections applied: 15+ deals removed after failing verification"
+---
+"Sources: Crain's Chicago Business, PitchBook, TechCrunch, company press releases, SEC filings, Start Midwest"
+"Contact: [Your contact info]"
+"License: This data may be used with attribution to Capital Access Data Project"

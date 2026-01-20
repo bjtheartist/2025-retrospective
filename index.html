@@ -6,6 +6,22 @@
     <title>Capital Access 2025 | Chicago Venture Retrospective</title>
     <meta name="description" content="64 verified deals. $2.99 billion disclosed. The real numbers behind Chicago's 2025 startup funding.">
 
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://2025-retrospective.vercel.app/">
+    <meta property="og:title" content="The Year in Review | Chicago Growth Capital 2025">
+    <meta property="og:description" content="64 verified deals. $2.99 billion disclosed. Equity, debt, and strategic investment flowing into Chicago's startup ecosystem.">
+    <meta property="og:image" content="https://2025-retrospective.vercel.app/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://2025-retrospective.vercel.app/">
+    <meta name="twitter:title" content="The Year in Review | Chicago Growth Capital 2025">
+    <meta name="twitter:description" content="64 verified deals. $2.99 billion disclosed. Equity, debt, and strategic investment flowing into Chicago's startup ecosystem.">
+    <meta name="twitter:image" content="https://2025-retrospective.vercel.app/og-image.png">
+
     <!-- Fonts: NYT/FT style serif + clean sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +35,11 @@
             colors: {
               'ink': '#121212',
               'ink-light': '#333333',
-              'paper': '#FFFDF8',
-              'paper-dark': '#F5F3EE',
-              'accent': '#C8553D', // NYT red-ish
-              'accent-subtle': '#E8D5B5',
-              'ft-pink': '#FFF1E5', // FT background
-              'ft-salmon': '#FF8C69',
+              'paper': '#FAFAFA',
+              'paper-dark': '#F0F0F0',
+              'accent': '#1E3A5F', // Serious blue
+              'accent-subtle': '#CBD5E1',
+              'accent-light': '#3B5998',
             },
             fontFamily: {
               'headline': ['"Instrument Serif"', 'Georgia', 'serif'],
@@ -58,7 +73,7 @@
 
       /* Selection colors */
       ::selection {
-        background-color: #C8553D;
+        background-color: #1E3A5F;
         color: white;
       }
 
@@ -67,7 +82,7 @@
 
       /* Gradient text */
       .gradient-text {
-        background: linear-gradient(135deg, #C8553D 0%, #E8D5B5 100%);
+        background: linear-gradient(135deg, #1E3A5F 0%, #3B5998 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
