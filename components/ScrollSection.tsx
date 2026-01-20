@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { SectorData } from '../types';
 
 interface ScrollSectionProps {
@@ -11,199 +11,225 @@ interface ScrollSectionProps {
 
 const ScrollSection: React.FC<ScrollSectionProps> = ({ data, index, onInView }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { margin: "-20% 0px -20% 0px" });
+  const isInView = useInView(containerRef, { margin: "-30% 0px -30% 0px" });
 
   useEffect(() => {
     if (isInView) {
       onInView(data.id);
     }
   }, [isInView, data.id, onInView]);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
 
-  // Smoother Parallax for the content card
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [60, 0, 0, -60]);
 
   const isEditorial = data.type === 'editorial';
 
-  // --- Broadsheet Editorial Layout (Full Screen Center) ---
+  // --- EDITORIAL SECTION (Full-screen quote/insight style) ---
   if (isEditorial) {
     return (
-      <section ref={containerRef} className="relative min-h-screen py-24 px-4 md:px-12 flex items-center justify-center z-10 pointer-events-none">
-        <motion.div 
+      <section
+        ref={containerRef}
+        id={data.id}
+        className="relative min-h-screen flex items-center justify-center py-24 px-6"
+      >
+        <motion.div
           style={{ opacity, y }}
-          className="w-full max-w-5xl bg-paper-base/95 backdrop-blur-sm shadow-2xl p-8 md:p-20 relative paper-texture border-y-4 border-black pointer-events-auto"
+          className="max-w-4xl mx-auto"
         >
-          <div className="flex justify-between items-center border-b-2 border-black pb-4 mb-12 font-sans text-xs uppercase tracking-widest text-gray-500">
-            <span>Special Report</span>
-            <span>Est. 1847</span>
-          </div>
+          {/* Card with subtle background */}
+          <div className="bg-paper/95 backdrop-blur-xl rounded-lg shadow-2xl p-10 md:p-16 border border-white/10">
+            {/* Section label */}
+            <div className="flex items-center gap-4 mb-10">
+              <span className="font-sans text-xs uppercase tracking-widest text-accent">
+                Analysis
+              </span>
+              <div className="flex-1 h-px bg-ink/10" />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-            <div className="md:col-span-8">
-              <h1 className="font-serif text-6xl md:text-8xl mb-12 leading-[0.85] text-ink-black multiply-text tracking-tighter">
-                {data.title}
-              </h1>
-              <div 
-                className="font-body text-2xl leading-relaxed text-justify multiply-text text-ink-black/90 first-letter:text-7xl first-letter:font-bold first-letter:mr-4 first-letter:float-left first-letter:font-serif first-letter:leading-none"
-                dangerouslySetInnerHTML={{ __html: data.overview }}
-              />
-            </div>
-            <div className="md:col-span-4 flex flex-col justify-center border-l border-black/10 pl-10">
-              <div className="font-serif italic text-3xl leading-tight text-ft-salmon mb-8">
-                "{data.insights || 'The future is unwritten.'}"
-              </div>
-            </div>
+            {/* Headline */}
+            <h2 className="font-headline text-headline text-ink mb-10 text-balance">
+              {data.title}
+            </h2>
+
+            {/* Body with drop cap effect */}
+            <div
+              className="font-body text-xl md:text-2xl leading-relaxed text-ink-light [&>strong]:text-ink [&>strong]:font-semibold [&>br]:block [&>br]:h-4"
+              style={{
+                columnCount: 1,
+              }}
+              dangerouslySetInnerHTML={{ __html: data.overview }}
+            />
           </div>
         </motion.div>
       </section>
     );
   }
 
-  // --- Broadsheet Analysis Layout (Stretched) ---
+  // --- ANALYSIS SECTION (Data-rich layout) ---
   return (
-    <section ref={containerRef} className="relative min-h-screen py-12 px-2 md:px-6 flex items-center justify-center z-10 pointer-events-none">
-      <motion.div 
+    <section
+      ref={containerRef}
+      id={data.id}
+      className="relative min-h-screen py-20 md:py-32 px-4 md:px-6"
+    >
+      <motion.div
         style={{ opacity, y }}
-        className="w-full max-w-[95vw] bg-paper-base/95 backdrop-blur-sm shadow-[0_0_100px_rgba(0,0,0,0.6)] p-6 md:p-16 relative paper-texture pointer-events-auto"
+        className="max-w-7xl mx-auto"
       >
-        {/* Header Row */}
-        <div className="border-b-2 border-black mb-10 pb-4 flex flex-col md:flex-row justify-between items-end gap-4">
-          <h2 className="font-serif text-5xl md:text-7xl text-ink-black multiply-text leading-none">
-            {data.title}
-          </h2>
-          <div className="flex items-center gap-4">
-            <span className="font-sans font-bold text-xs uppercase tracking-[0.2em] mb-1 text-ft-salmon whitespace-nowrap">
-               Sector Report 0{index}
-            </span>
-            <div className="w-24 h-[1px] bg-black mb-1 hidden md:block"></div>
-          </div>
-        </div>
+        {/* Main Card */}
+        <div className="bg-paper/95 backdrop-blur-xl rounded-lg shadow-2xl overflow-hidden border border-white/10">
 
-        {/* 12-Column Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-          
-          {/* LEFT: Narrative (4 cols) */}
-          <div className="lg:col-span-4 flex flex-col border-r border-black/10 pr-0 lg:pr-12">
-            <h3 className="font-sans font-bold text-sm uppercase mb-6 text-gray-400 tracking-widest">Market Overview</h3>
-            <p className="font-body text-xl leading-relaxed text-justify text-ink-black mb-12 multiply-text">
-              {data.overview}
-            </p>
-            
-            <div className="mt-auto bg-black/5 p-8 border-l-4 border-ft-salmon">
-              <h4 className="font-serif font-bold italic text-2xl mb-4 text-ft-salmon">"Analysis"</h4>
-              <p className="font-body italic text-lg text-ink-black/80 leading-relaxed">{data.insights}</p>
+          {/* Header */}
+          <div className="p-8 md:p-12 border-b border-ink/10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
+              <div>
+                <span className="font-sans text-xs uppercase tracking-widest text-accent mb-2 block">
+                  Section {String(index).padStart(2, '0')}
+                </span>
+                <h2 className="font-headline text-headline text-ink">
+                  {data.title}
+                </h2>
+              </div>
+              {/* Key Stats Pills */}
+              <div className="flex flex-wrap gap-3">
+                {data.stats?.slice(0, 2).map((stat, i) => (
+                  <div
+                    key={i}
+                    className="bg-ink/5 rounded-full px-4 py-2 flex items-center gap-2"
+                  >
+                    <span className="font-headline text-2xl text-ink">{stat.value}</span>
+                    <span className="font-sans text-xs uppercase tracking-wider text-ink/50">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* CENTER: Data Viz (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col">
-            <div className="flex justify-between items-baseline mb-6">
-                 <h3 className="font-sans font-bold text-sm uppercase text-gray-400 tracking-widest">Growth Index</h3>
-                 <span className="font-mono text-xs text-ft-salmon">2020 — 2025</span>
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+
+            {/* Left Column - Narrative */}
+            <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-ink/10">
+              <p className="font-body text-lg leading-relaxed text-ink-light mb-8">
+                {data.overview}
+              </p>
+
+              {/* Insight Quote */}
+              {data.insights && (
+                <div className="border-l-4 border-accent pl-6 py-2">
+                  <p className="font-headline italic text-xl text-ink">
+                    "{data.insights}"
+                  </p>
+                </div>
+              )}
+
+              {/* Future Trend */}
+              {data.futureTrend && (
+                <div className="mt-8 p-6 bg-accent/5 rounded-lg">
+                  <span className="font-sans text-xs uppercase tracking-widest text-accent mb-2 block">
+                    2026 Outlook
+                  </span>
+                  <p className="font-body text-base text-ink-light">
+                    {data.futureTrend}
+                  </p>
+                </div>
+              )}
             </div>
-            
-            {/* Enhanced Chart */}
-            <div className="h-80 w-full mb-8 bg-[#F0EEE6] border border-black/10 p-6 relative shadow-inner">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={data.chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#C19A6B" stopOpacity={0.4}/>
-                      <stop offset="95%" stopColor="#C19A6B" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#dcdcdc" vertical={false} />
-                  <XAxis 
-                    dataKey="year" 
-                    tick={{fontFamily: 'Lora', fontSize: 11, fill: '#666'}} 
-                    axisLine={{stroke: '#999'}} 
-                    tickLine={false}
-                    dy={10}
-                  />
-                  <YAxis 
-                    tick={{fontFamily: 'Lora', fontSize: 11, fill: '#666'}} 
-                    axisLine={false} 
-                    tickLine={false}
-                  />
-                  <Tooltip 
-                    contentStyle={{
-                        backgroundColor: '#F4F1EA', 
-                        borderColor: '#C19A6B', 
-                        fontFamily: 'Lora', 
+
+            {/* Middle Column - Chart */}
+            <div className="lg:col-span-4 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-ink/10 bg-paper-dark/50">
+              <div className="mb-4">
+                <span className="font-sans text-xs uppercase tracking-widest text-ink/40">
+                  {data.chartLabel || 'Funding Distribution'}
+                </span>
+              </div>
+
+              <div className="h-72">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={data.chartData}
+                    layout="vertical"
+                    margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
+                  >
+                    <XAxis type="number" hide />
+                    <YAxis
+                      type="category"
+                      dataKey="year"
+                      axisLine={false}
+                      tickLine={false}
+                      tick={{ fontFamily: 'Inter', fontSize: 11, fill: '#666' }}
+                      width={80}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: '#FFFDF8',
+                        border: '1px solid #E8D5B5',
+                        borderRadius: '8px',
+                        fontFamily: 'Inter',
                         fontSize: '12px',
-                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                    }}
-                    itemStyle={{ color: '#1a1a1a' }}
-                    cursor={{ stroke: '#C19A6B', strokeWidth: 1 }}
-                  />
-                  <Area 
-                    type="monotone" 
-                    dataKey="value" 
-                    stroke="#C19A6B" 
-                    strokeWidth={2.5}
-                    fillOpacity={1} 
-                    fill="url(#colorVal)"
-                    animationDuration={2000}
-                    animationEasing="ease-out"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-              <div className="absolute bottom-2 right-4 text-[9px] font-sans uppercase text-gray-400 tracking-widest">
-                Fig 1.1 — {data.chartLabel}
+                      }}
+                      formatter={(value: number, name: string, props: any) => {
+                        const label = props.payload?.label || `$${value}M`;
+                        return [label, ''];
+                      }}
+                      cursor={{ fill: 'rgba(200, 85, 61, 0.1)' }}
+                    />
+                    <Bar
+                      dataKey="value"
+                      radius={[0, 4, 4, 0]}
+                      animationDuration={1500}
+                      animationEasing="ease-out"
+                    >
+                      {data.chartData?.map((entry, idx) => (
+                        <Cell
+                          key={`cell-${idx}`}
+                          fill={idx === 0 ? '#C8553D' : '#E8D5B5'}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
-            {/* Key Stats Row */}
-            <div className="grid grid-cols-2 gap-px bg-black/10 border border-black/10">
-              {data.stats?.map((stat, i) => (
-                <div key={i} className="bg-paper-base p-6 hover:bg-[#efede6] transition-colors">
-                  <div className="font-sans text-[10px] uppercase text-gray-500 tracking-wider mb-2">{stat.label}</div>
-                  <div className="font-serif text-4xl font-bold text-ink-black mb-2">{stat.value}</div>
-                  <div className={`inline-block px-2 py-1 text-[10px] font-bold uppercase tracking-wide border ${
-                      stat.trend === 'up' 
-                      ? 'border-green-800 text-green-800 bg-green-50' 
-                      : 'border-gray-400 text-gray-600 bg-gray-50'
-                  }`}>
-                    {stat.trend === 'up' ? '▲' : '■'} {stat.trendValue}
-                  </div>
-                </div>
-              ))}
+            {/* Right Column - Startups List */}
+            <div className="lg:col-span-3 p-8 md:p-12">
+              <span className="font-sans text-xs uppercase tracking-widest text-ink/40 mb-6 block">
+                Notable Deals
+              </span>
+
+              <ul className="space-y-6">
+                {data.startups?.slice(0, 5).map((startup, i) => (
+                  <li key={i} className="group">
+                    <div className="flex items-start gap-3">
+                      <span className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/10 text-accent font-sans text-xs flex items-center justify-center mt-0.5">
+                        {i + 1}
+                      </span>
+                      <div>
+                        <h4 className="font-headline text-lg text-ink group-hover:text-accent transition-colors">
+                          {startup.name}
+                        </h4>
+                        <p className="font-sans text-xs text-accent mb-1">
+                          {startup.funding}
+                        </p>
+                        <p className="font-body text-sm text-ink/60 leading-relaxed">
+                          {startup.description}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
+
           </div>
-
-          {/* RIGHT: Startups / Sidebar (3 cols) */}
-          <div className="lg:col-span-3 border-l border-black/10 pl-0 lg:pl-12 pt-8 lg:pt-0">
-             <h3 className="font-sans font-bold text-sm uppercase mb-6 text-gray-400 tracking-widest">Notable Ventures</h3>
-             <ul className="space-y-8">
-               {data.startups?.map((startup, i) => (
-                 <li key={i} className="group cursor-pointer">
-                   <div className="flex items-center gap-2 mb-2">
-                        <div className="w-2 h-2 bg-ft-salmon rounded-full group-hover:scale-125 transition-transform" />
-                        <div className="font-serif font-bold text-xl leading-none group-hover:text-ft-salmon transition-colors">
-                            {startup.name}
-                        </div>
-                   </div>
-                   <div className="font-sans text-xs text-gray-500 mb-2 pl-4 border-l border-gray-200 uppercase tracking-wide">{startup.funding}</div>
-                   <p className="font-body text-sm leading-relaxed text-gray-700 pl-4 border-l border-gray-200">
-                     {startup.description}
-                   </p>
-                 </li>
-               ))}
-             </ul>
-
-             <div className="mt-12 pt-6 border-t border-black/20">
-               <h3 className="font-sans font-bold text-xs uppercase mb-3 text-gray-400 tracking-widest">2026 Forecast</h3>
-               <p className="font-serif italic text-base leading-relaxed text-ink-black">
-                 "{data.futureTrend}"
-               </p>
-             </div>
-          </div>
-
         </div>
       </motion.div>
     </section>

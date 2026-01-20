@@ -3,52 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chicago 2025: Retrospective</title>
+    <title>Capital Access 2025 | Chicago Venture Retrospective</title>
+    <meta name="description" content="64 verified deals. $2.99 billion disclosed. The real numbers behind Chicago's 2025 startup funding.">
+
+    <!-- Fonts: NYT/FT style serif + clean sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'ink-black': '#1a1a1a',
-              'paper-base': '#F4F1EA',
-              'ft-salmon': '#C19A6B', 
-              'news-grey': '#e2e8f0',
+              'ink': '#121212',
+              'ink-light': '#333333',
+              'paper': '#FFFDF8',
+              'paper-dark': '#F5F3EE',
+              'accent': '#C8553D', // NYT red-ish
+              'accent-subtle': '#E8D5B5',
+              'ft-pink': '#FFF1E5', // FT background
+              'ft-salmon': '#FF8C69',
             },
             fontFamily: {
-              serif: ['"Playfair Display"', 'serif'],
-              body: ['"Lora"', 'serif'],
-              masthead: ['"Cinzel"', 'serif'],
-              sans: ['"Inter"', 'sans-serif'],
+              'headline': ['"Instrument Serif"', 'Georgia', 'serif'],
+              'body': ['"Source Serif 4"', 'Georgia', 'serif'],
+              'sans': ['"Inter"', 'system-ui', 'sans-serif'],
+            },
+            fontSize: {
+              'display': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+              'headline': ['clamp(2rem, 5vw, 4rem)', { lineHeight: '1.1', letterSpacing: '-0.01em' }],
+              'subhead': ['clamp(1.25rem, 2.5vw, 1.75rem)', { lineHeight: '1.3' }],
             }
           }
         }
       }
     </script>
     <style>
-      html { scroll-behavior: smooth; }
-      body { 
-        background-color: #0a0a0a; 
-        color: #1a1a1a;
-        -webkit-font-smoothing: antialiased;
-        cursor: none; 
-      }
-      
-      @media (hover: none) and (pointer: coarse) {
-        body { cursor: auto; }
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y proximity;
       }
 
-      /* Paper Texture Filter Utility */
+      body {
+        background-color: #121212;
+        color: #121212;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Hide scrollbar but keep functionality */
+      ::-webkit-scrollbar { width: 0; background: transparent; }
+
+      /* Selection colors */
+      ::selection {
+        background-color: #C8553D;
+        color: white;
+      }
+
+      /* Smooth text rendering */
+      .text-balance { text-wrap: balance; }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(135deg, #C8553D 0%, #E8D5B5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      /* Paper texture subtle */
       .paper-texture {
-        filter: url('#paper-noise');
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
       }
-      
-      .multiply-text {
-        mix-blend-mode: multiply;
+
+      /* Progress bar animation */
+      @keyframes progressGrow {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
       }
+
+      /* Fade in animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+      }
+
+      /* Stagger children */
+      .stagger-children > * {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+      .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+      .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+      .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+      .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
     </style>
   <script type="importmap">
 {
@@ -65,17 +126,6 @@
 </script>
 </head>
   <body>
-    <!-- SVG Noise Filter Definition -->
-    <svg style="display: none;">
-      <defs>
-        <filter id="paper-noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0"/>
-          <feComposite operator="in" in2="SourceGraphic" result="monoNoise"/>
-          <feBlend in="SourceGraphic" in2="monoNoise" mode="multiply" />
-        </filter>
-      </defs>
-    </svg>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>
